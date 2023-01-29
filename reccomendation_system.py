@@ -1,14 +1,11 @@
-from flask import Flask
+import numpy as np
+import pandas as pd
+import difflib
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from pprint import pprint
 
-app = Flask(__name__)
-
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
-@app.route("/search")
-def get_similiar():
-    movies_data = pd.read_csv('movie_dataset\movies.csv')
+movies_data = pd.read_csv('movie_dataset\movies.csv')
 
 selected_features = ['genres','keywords','tagline','cast','director']
 
@@ -39,7 +36,6 @@ similarity_score = list(enumerate(similiarity[index_of_the_movie]))
 sorted_similar_movies = sorted(similarity_score, key = lambda x:x[1], reverse = True)
 
 print('Movies suggested for you : \n')
-suggestion_list = []
 i = 1
 for movie in sorted_similar_movies:
   index = movie[0]
