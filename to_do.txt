@@ -1,0 +1,5 @@
+Obiettivi raggiunti:
+- Algoritmo di cosine similarity realizzato;
+Obiettivi non raggiunti:
+- Parte Flask da sistemare;
+- Front-end ancora da realizzare;
