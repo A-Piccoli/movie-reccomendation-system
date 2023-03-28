@@ -1,9 +1,10 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, url_for
 import numpy as np
 import pandas as pd
 import difflib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 
 app = Flask(__name__)
 
@@ -13,7 +14,8 @@ def hello_world():
 
 @app.route("/search",methods=["GET"])
 def get_similiar():
-    movies_data = pd.read_csv('movie_dataset\movies.csv')
+
+    movies_data = pd.read_csv("movie_dataset\movies.csv")
 
     selected_features = ['genres','keywords','tagline','cast','director']
 
@@ -53,10 +55,13 @@ def get_similiar():
             movie_list.append(title_from_index)
             i+=1
 
-        print(movie_list)
-
     return render_template('reccomend.html', movie_list=movie_list)
         
 if __name__ == '__main__':
     # run app in debug mode on port 5000
     app.run(debug=True, port=5000)
+
+
+
+
+

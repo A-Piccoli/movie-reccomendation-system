@@ -5,15 +5,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            /* provare a vedere se l'immagine di sfondo appare, altrimenti specificare il percorso dell'immagine o cambiare immagine */
+            background-image: url("static\images\movies.jpg") no-repeat 100% 100%;
+        }
+
+        h3{
+            color: black;
+        }
+
+        .container{
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            width: 400px;
+            height: 500px;
+            margin: -100px 0 0 -175px;
+        }
+
+        .insert{
+            background-color: white;
+            width: 350px;
+            height: 100px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            border-radius: 10px;
+            font-family: sans-serif;
+        }
+
+        .result{
+            width: 350px;
+            height: 350px;
+            background-color: white;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            padding-top: 3px;
+            padding-left: 5px;
+            border-radius: 10px;
+            font-family: sans-serif;
+        }
+
+        .in{
+            height: 40px;
+            border: 1px solid #ced4da;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-size: 14px;
+            color: #495057;
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+
+        .button{
+            min-width: 40px;
+            height: 40px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            margin-top: 10px;
+        }
+
+    </style>
     <title>Document</title>
 </head>
 
 <body>
-    <form action="http://localhost:5000/search" method="get">
-        <p>Enter Name:</p>
-        <p><input type="text" name="movie_name" id="movie_name"/></p>
-        <p><input type="submit" value="submit" /></p>
-    </form>
+    <div class="container">
+        <div class="insert">
+            <div style="background-color: black; width: 350px; height: 20px; border-top-right-radius: 10px; border-top-left-radius: 10px;">
+            <h4 style="text-align: center; color: white;">Movie Recommendation System</h4>
+            </div>
+            <form action="http://localhost:5000/search" method="get">
+                <input type="text" name="movie_name" id="movie_name" class="in" placeholder="Enter title"/>
+                <input type="submit" value="submit" class="button"/>
+            </form>
+        </div>
+        <div class="result">
+            {% block content %}
+            {% endblock content%}
+        </div>
+    </div>
+    
 </body>
 
 </html>
