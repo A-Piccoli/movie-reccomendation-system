@@ -1,7 +1,11 @@
 {% extends 'home.html' %}
 {% block content %}
     {% for movie in movie_list %}
-      <p>{{ movie }} </p>
+      {%set path = '/static/posters/' + movie%}
+      
+        <p>{{ movie}}</p>
+        <img style="display:flex; bottom: 50px; left: 80px; width: 40px;" src="{{ url_for('static', filename=movie+'.jpg')}}">
+      
     {% endfor %}
 {% endblock content %}
 
